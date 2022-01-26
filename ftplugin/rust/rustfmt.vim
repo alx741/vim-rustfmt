@@ -25,7 +25,7 @@ function! rustfmt#Rustfmt() range
         return
     endif
 
-    let l:edition_opt = " --edition 2018"
+    let l:edition_opt = " --edition 2021"
     if exists("g:rustfmt_edition")
       let l:edition_opt = " --edition " . g:rustfmt_edition
     endif
