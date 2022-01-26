@@ -34,7 +34,7 @@ Trigger *rustfmt* when saving (default = 1):
 g:rustfmt_on_save = 1
 ```
 
-Rust edition to use (default = '2018'):
+Rust edition to use (default = '2021'):
 
 ```vim
 g:rustfmt_edition = '2018'
