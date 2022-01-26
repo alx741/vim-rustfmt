@@ -25,20 +25,20 @@ function! rustfmt#Rustfmt() range
         return
     endif
 
+    let l:edition_opt = " --edition 2018"
+    if exists("g:rustfmt_edition")
+      let l:edition_opt = " --edition " . g:rustfmt_edition
+    endif
+
     " Write the buffer to rustfmt, rather than having it use the
     " file on disk, because that file might not have been created yet!
-    silent! w !rustfmt > /dev/null 2>&1
+    silent! exe "w !rustfmt" . l:edition_opt . " > /dev/null 2>&1"
 
     if v:shell_error
         echohl WarningMsg
         echo "Rustfmt: Parsing error\n"
         echohl None
     else
-        let l:edition_opt = " --edition 2018"
-        if exists("g:rustfmt_edition")
-          let l:edition_opt = " --edition " . g:rustfmt_edition
-        endif
-
         let l:backup_opt = ""
         if g:rustfmt_backup == 1
             let l:backup_opt = " --backup"
